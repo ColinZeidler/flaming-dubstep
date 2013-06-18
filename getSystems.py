@@ -4,19 +4,19 @@ from sys import argv
 name = argv[1]
 #argv[1] is the first arg 
 systems = {'Avocado':'A', 
-'Banana':'B', 
-'Coconut':'C', 
-'Duku':'D',
-'Emblic':'E',
-'Fig':'F', 
-'Galia':'G', 
-'Honeydew':'H', 
-'Imbe':'I',
-'Jalapeno':'J',
-'Kiwi':'K',
-'Loganberry':'L',
-'Newton':'N', 
-'Papaya':'P'}
+	'Banana':'B', 
+	'Coconut':'C', 
+	'Duku':'D',
+	'Emblic':'E',
+	'Fig':'F', 
+	'Galia':'G', 
+	'Honeydew':'H', 
+	'Imbe':'I',
+	'Jalapeno':'J',
+	'Kiwi':'K',
+	'Loganberry':'L',
+	'Newton':'N', 
+	'Papaya':'P'}
 behind_m = {'A':0, 'B':1, 'C':2, 'D':3}
 behind_p = {'G':0, 'H':1, 'I':2}
 behind_r = {'P':0}
