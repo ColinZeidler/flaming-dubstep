@@ -44,3 +44,37 @@ if short_name in behind_pass:
                 port += behind_r[short_name]
 else:
         ip = no_pp[short_name]
+
+#id and name dictionary
+names = {}
+r = requests.get("http://{}:{}/ui/services/locations".format(ip, port), auth=("user", "video123"))
+for sys in r.json():
+	names[sys['id']] = sys['properties']['name']
+names[None] = "Own"
+
+#get connected systems and put them in an array
+connected = []
+
+r = requests.get("http://{}:{}/ui/services/connections".format(ip, port), auth=("user", "video123"))
+
+for item in r.json():
+	if item['action'] == "connected":
+		connected.append(item['name'])
+
+#get stream stats
+
+streams = []
+
+r = requests.get("http://{}:{}/ui/services/system/stream-stats".format(ip, port), auth = ("user", "video123"))
+
+for item in r.json()['streams-incoming-video']:
+	streams.append(item)
+
+
+for stream in streams:
+	print names[stream['location-id']] or "self"
+	for vid in stream['streams-incoming-video-status']:
+		try:
+			print "-", vid['source-fps'], vid['title']
+		except:
+			print vid['fps'], vid['title']
