@@ -10,12 +10,14 @@
 				systemName = "";
 				loadSysName();
 				getSystems(true);
+				getCollabs(true);
 			}
 			function loadSysName() {
 				var element = document.getElementById("systemSelector");
 				systemName = element.options[element.selectedIndex].value;
 				document.title = systemName;
 				getSystems(false);
+				getCollabs(false);
 			}
 			function getSystems(multi) {
 				var xmlhttp=new XMLHttpRequest();
@@ -29,6 +31,20 @@
 					}
 				}
 				xmlhttp.open('GET', 'getSystems.php?system='+systemName);
+				xmlhttp.send();
+			}
+			function getCollabs(multi) {
+				var xmlhttp=new XMLHttpRequest();
+				
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("collabs").innerHTML = xmlhttp.responseText;
+						if (multi) {
+							setTimeout('getCollabs(true)', 5000);
+						}
+					}
+				}
+				xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
 				xmlhttp.send();
 			}
 	</script>

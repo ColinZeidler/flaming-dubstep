@@ -1,6 +1,8 @@
 import requests
 from sys import argv, version
 name = argv[1]
+option = argv[2]
+
 #argv[1] is the first arg 
 systems = {'Avocado':'A', 
 	'Banana':'B', 
@@ -43,10 +45,20 @@ if short_name in behind_pass:
 		port += behind_r[short_name]
 else:
 	ip = no_pp[short_name]
+if option == "system":
+	r = requests.get("http://{}:{}/ui/services/locations".format(ip, port), auth=("user", "video123"))
 
-r = requests.get("http://{}:{}/ui/services/locations".format(ip, port), auth=("user", "video123"))
+	for system in r.json():
+		print "<div id='system'>"
+		print system['properties']['name']
+		print "</div>"
 
-for system in r.json():
-	print "<div id='system'>"
-	print system['properties']['name']
-	print "</div>"
+elif option == "collab":
+	r = requests.get("http://{}:{}/ui/services/resources".format(ip, port), auth=("user", "video123"))
+
+	for system in r.json():
+		print "<div id='collab'>"
+		print system['properties']['name'] + ":", system['properties']['type']
+		print "</div>"
+
+	
