@@ -1,6 +1,5 @@
 import requests
-from sys import argv
-
+from sys import argv, version
 name = argv[1]
 #argv[1] is the first arg 
 systems = {'Avocado':'A', 
@@ -45,6 +44,9 @@ if short_name in behind_pass:
 else:
 	ip = no_pp[short_name]
 
-print port, ip
+r = requests.get("http://{}:{}/ui/services/locations".format(ip, port), auth=("user", "video123"))
 
-#r = requests.get(
+for system in r.json():
+	print "<div id='system'>"
+	print system['properties']['name']
+	print "</div>"

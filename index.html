@@ -4,6 +4,35 @@
 		<link rel="stylesheet" type="text/css" href="main.css">
 		
 	</head>
+	<script type="text/javascript">
+			var systemName = '';
+			function ready() {
+				systemName = "";
+				loadSysName();
+				getSystems(true);
+			}
+			function loadSysName() {
+				var element = document.getElementById("systemSelector");
+				systemName = element.options[element.selectedIndex].value;
+				document.title = systemName;
+				getSystems(false);
+			}
+			function getSystems(multi) {
+				var xmlhttp=new XMLHttpRequest();
+				
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("systems").innerHTML = xmlhttp.responseText;
+						if (multi) {
+							setTimeout('getSystems(true)', 5000);
+						}
+					}
+				}
+				xmlhttp.open('GET', 'getSystems.php?system='+systemName);
+				xmlhttp.send();
+			}
+	</script>
+
 	<body onload='ready()'>
 		<form>
 			<select id="systemSelector" onchange='loadSysName()'>
@@ -30,17 +59,6 @@
 			<div id="collab">a collab</div>
 		</div>
 		<div id="stats">Stats are here</div>
-		<script type="text/javascript">
-			var systemName = '';
-			function ready() {
-				systemName = "";
-				loadSysName();
-			}
-			function loadSysName() {
-				var element = document.getElementById("systemSelector");
-				systemName = element.options[element.selectedIndex].value;
-				document.title = systemName;
-			}
-		</script>
 	</body>
+
 </html>

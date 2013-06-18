@@ -6,6 +6,7 @@
 	width:46%;
 	height:42%;
 	background-color:#700000;
+	overflow:auto;
 }
 
 #collabs {
@@ -16,6 +17,7 @@
 	height:42%;
 	padding:0.5em;
 	background-color:#007000;
+	overflow:auto;
 }
 
 #stats {
@@ -28,6 +30,7 @@
 	color:#AAA;
 	padding:0.5em;
 	background-color:#000070;
+	overflow:auto;
 }
 
 #system, #collab {
@@ -36,10 +39,7 @@
 	margin:auto;
 	height:3em;
 	padding:0.5em;
-}
-
-#collab {
-
+	margin-top:0.5em;
 }
 
 html {
