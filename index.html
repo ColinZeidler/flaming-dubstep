@@ -8,9 +8,10 @@
 			var systemName = '';
 			function ready() {
 				systemName = "";
-				loadSysName();
-				getSystems(true);
-				getCollabs(true);
+			//	loadSysName();
+			//	getSystems(true);
+			//	getCollabs(true);
+			//	getStats(true);
 			}
 			function loadSysName() {
 				var element = document.getElementById("systemSelector");
@@ -18,13 +19,14 @@
 				document.title = systemName;
 				getSystems(false);
 				getCollabs(false);
+				getStats(false);
 			}
 			function getSystems(multi) {
 				var xmlhttp=new XMLHttpRequest();
 				
 				xmlhttp.onreadystatechange=function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("systems").innerHTML = xmlhttp.responseText;
+						document.getElementById("systemsContent").innerHTML = xmlhttp.responseText;
 						if (multi) {
 							setTimeout('getSystems(true)', 5000);
 						}
@@ -38,7 +40,7 @@
 				
 				xmlhttp.onreadystatechange=function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("collabs").innerHTML = xmlhttp.responseText;
+						document.getElementById("collabsContent").innerHTML = xmlhttp.responseText;
 						if (multi) {
 							setTimeout('getCollabs(true)', 5000);
 						}
@@ -46,6 +48,24 @@
 				}
 				xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
 				xmlhttp.send();
+			}
+			function getStats(multi) {
+				var xmlhttp=new XMLHttpRequest();
+				
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("statsContent").innerHTML = xmlhttp.responseText;
+						if (multi) {
+							setTimeout('getStats(true)', 500);
+						}
+					}
+				}
+				xmlhttp.open('GET', 'stats.php?system='+systemName);
+				xmlhttp.send();
+			}
+			function collabClick() {
+				console.log("click");
+				console.log(this);
 			}
 	</script>
 
@@ -68,19 +88,23 @@
 				<option value="Papaya">Papaya</option>
 			</select>
 		</form>
-		<div id="systems">Systems are here
+		<div id="systems"><h3>Remote Systems</h3>
+		<div id=systemsContent>
 			<div id="system">a system</div>
 		</div>
-		<div id="collabs">Collabs are here
-			<div id="collab">a collab</div>
 		</div>
-		<div id="stats">Stats are here
-			<div id=SysStat>a stat grouping
+		<div id="collabs"><h3>Collabs</h3>
+		<div id=collabsContent>
+			<div id="collab" onclick='collabClick()'>a collab</div>
+		</div>
+		</div>
+		<div id="stats"><h3>Incoming Video Stats</h3>
+		<div id=statsContent>
+			<div id=SysStat><b>a stat grouping</b>
 				<div id=stat> a single stat</div>
 				<div id=stat> a single stat</div>
 			</div>
-			<div id=SysStat>a stat grouping
-				<div id=stat> a single stat</div>
+			<div id=SysStat><b>a stat grouping</b>
 				<div id=stat> a single stat</div>
 				<div id=stat> a single stat</div>
 				<div id=stat> a single stat</div>
@@ -91,11 +115,11 @@
 				<div id=stat> a single stat</div>
 				<div id=stat> a single stat</div>
 			</div>
-			<div id=SysStat>a stat grouping
+			<div id=SysStat><b>a stat grouping</b>
 				<div id=stat> a single stat</div>
 				<div id=stat> a single stat</div>
 			</div>
-
+		</div>
 		</div>
 	</body>
 

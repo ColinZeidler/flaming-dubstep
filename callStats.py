@@ -50,7 +50,7 @@ names = {}
 r = requests.get("http://{}:{}/ui/services/locations".format(ip, port), auth=("user", "video123"))
 for sys in r.json():
 	names[sys['id']] = sys['properties']['name']
-names[None] = "Own"
+names[None] = "Self"
 
 #get connected systems and put them in an array
 connected = []
@@ -72,9 +72,17 @@ for item in r.json()['streams-incoming-video']:
 
 
 for stream in streams:
+	print "<div id=SysStat><b>"
 	print names[stream['location-id']] or "self"
+	print "</b>"
 	for vid in stream['streams-incoming-video-status']:
+		print "<div id=stat>"
+		print "<b>" + vid['title'] +"</b>"
+		print "<p>"
 		try:
-			print "-", vid['source-fps'], vid['title']
+			print vid['source-fps'], "FPS"
 		except:
-			print vid['fps'], vid['title']
+			print vid['fps'], "FPS"
+		print "</p>"
+		print "</div>"
+	print "</div>"

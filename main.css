@@ -9,6 +9,7 @@
 	overflow:auto;
 }
 
+
 #collabs {
 	position:absolute;
 	bottom:10px;
@@ -19,6 +20,7 @@
 	background-color:#007000;
 	overflow:auto;
 }
+
 
 #stats {
 	position:absolute;
@@ -50,9 +52,8 @@ html {
 #SysStat {
 	background-color:#222;
 	width:95%;
-	height:auto;
+	clear:both;
 	margin:auto;
-	margin-bottom:7em;
 }
 
 #stat {
@@ -64,6 +65,3 @@ html {
 	padding:0.5em;
 }
 
-#SysStatT {
-	float:left;
-}
