@@ -6,22 +6,23 @@
 	</head>
 	<script type="text/javascript">
 			var systemName = '';
-			function ready() {
+			var collabBaseHeight = ''; //the base height to return the collabs to
+			function ready() {	//called after the page has loaded
 				systemName = "";
-			//	loadSysName();
-			//	getSystems(true);
-			//	getCollabs(true);
-			//	getStats(true);
+				collabBaseHeight = document.getElementById("collab1").clientHeight;
+				loadSysName();
+				getSystems(true);	// true causes the ajax requests to repeat
+				getStats(true);
 			}
-			function loadSysName() {
+			function loadSysName() {	//called when the system is changed
 				var element = document.getElementById("systemSelector");
 				systemName = element.options[element.selectedIndex].value;
 				document.title = systemName;
-				getSystems(false);
+				getSystems(false);	//false prevents the ajax requests from adding up
 				getCollabs(false);
 				getStats(false);
 			}
-			function getSystems(multi) {
+			function getSystems(multi) {	//used to get the location info for the remote systems div
 				var xmlhttp=new XMLHttpRequest();
 				
 				xmlhttp.onreadystatechange=function() {
@@ -35,7 +36,7 @@
 				xmlhttp.open('GET', 'getSystems.php?system='+systemName);
 				xmlhttp.send();
 			}
-			function getCollabs(multi) {
+			function getCollabs(multi) {	//used to get info for the collabs div
 				var xmlhttp=new XMLHttpRequest();
 				
 				xmlhttp.onreadystatechange=function() {
@@ -49,7 +50,7 @@
 				xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
 				xmlhttp.send();
 			}
-			function getStats(multi) {
+			function getStats(multi) {	//used to get call stats for the stats div
 				var xmlhttp=new XMLHttpRequest();
 				
 				xmlhttp.onreadystatechange=function() {
@@ -63,9 +64,16 @@
 				xmlhttp.open('GET', 'stats.php?system='+systemName);
 				xmlhttp.send();
 			}
-			function collabClick() {
-				console.log("click");
-				console.log(this);
+			function collabClick(collabIndex) { //expands the clicked on collab, opening share options
+				var collab = document.getElementById(collabIndex);
+				var owner = collab.parentNode;
+				if (collab.clientHeight == 0) {
+					collab.style.height = "200px";
+					owner.style.height = collabBaseHeight + 200 + "px";
+				} else {
+					collab.style.height = "0";
+					owner.style.height = collabBaseHeight + "px";
+				}
 			}
 	</script>
 
@@ -95,7 +103,12 @@
 		</div>
 		<div id="collabs"><h3>Collabs</h3>
 		<div id=collabsContent>
-			<div id="collab" onclick='collabClick()'>a collab</div>
+			<div id="collab1" class=collab onclick='collabClick("c1")'>a collab
+				<div id=c1 class=panel>a collab panel</div>	
+			</div>
+			<div id="collab2" class=collab onclick='collabClick("c2")'>a collab
+				<div id=c2 class=panel>a collab panel</div>	
+			</div>
 		</div>
 		</div>
 		<div id="stats"><h3>Incoming Video Stats</h3>

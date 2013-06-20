@@ -56,10 +56,12 @@ if option == "system":
 
 elif option == "collab":
 	r = requests.get("http://{}:{}/ui/services/resources".format(ip, port), auth=("user", "video123"))
-
+	
+	counter = 1
 	for system in r.json():
-		print "<div id='collab'>"
+		print "<div id='collab{0}' class=collab onclick='collabClick(\"c{0}\")'>".format(counter)
 		print system['properties']['name'] + ":", system['properties']['type']
+		print "<div id=c{} class=panel>connected systems will go here</div>".format(counter)
 		print "</div>"
-
+		counter +=1
 	

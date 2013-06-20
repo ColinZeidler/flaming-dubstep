@@ -35,13 +35,16 @@
 	overflow:auto;
 }
 
-#system, #collab {
+#system, .collab {
 	background-color:#AAA;
 	width:95%;
 	margin:auto;
 	height:3em;
 	padding:0.5em;
 	margin-top:0.5em;
+	transition-duration:0.75s;
+	transition-property:all;
+	transition-timing-function:linear;
 }
 
 html {
@@ -65,3 +68,13 @@ html {
 	padding:0.5em;
 }
 
+.collab .panel {
+	background-color:#F00;
+	position:relative;
+	top:2em;
+	height:0;
+	overflow:hidden;
+	transition-duration:0.75s;
+	transition-property:all;
+	transition-timing-function:linear;
+}
