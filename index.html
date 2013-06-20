@@ -13,6 +13,20 @@
 				loadSysName();
 				getSystems(true);	// true causes the ajax requests to repeat
 				getStats(true);
+				//set height of content divs to remainder of parent
+
+				var collab = document.getElementById("collabsContent");
+				var system = document.getElementById("systemsContent");
+				var stat = document.getElementById("statsContent");
+			/*	var cParent = collab.parentNode;
+				var sParent = system.parentNode;
+				var statParent = stat.parentNode;
+				console.log(collab.clientHeight);
+				console.log(cParent.clientHeight);
+				console.log(system.clientHeight);
+				console.log(sParent.clientHeight);
+				console.log(stat.clientHeight);
+				console.log(statParent.clientHeight);*/
 			}
 			function loadSysName() {	//called when the system is changed
 				var element = document.getElementById("systemSelector");
@@ -64,17 +78,20 @@
 				xmlhttp.open('GET', 'stats.php?system='+systemName);
 				xmlhttp.send();
 			}
-			function collabClick(collabIndex) { //expands the clicked on collab, opening share options
+			/*function collabClick(collabIndex) { //expands the clicked on collab, opening share options
 				var collab = document.getElementById(collabIndex);
 				var owner = collab.parentNode;
 				if (collab.clientHeight == 0) {
-					collab.style.height = "200px";
-					owner.style.height = collabBaseHeight + 200 + "px";
+					collab.style.height = "auto";
+					var tempH = collab.clientHeight;
+					collab.style.height = "0";
+					collab.style.height = tempH + 8 + "px";
+					owner.style.height = collabBaseHeight + 8 + tempH + "px";
 				} else {
 					collab.style.height = "0";
 					owner.style.height = collabBaseHeight + "px";
 				}
-			}
+			}*/
 	</script>
 
 	<body onload='ready()'>

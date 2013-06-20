@@ -6,7 +6,7 @@
 	width:46%;
 	height:42%;
 	background-color:#700000;
-	overflow:auto;
+	overflow:hidden;
 }
 
 
@@ -18,7 +18,7 @@
 	height:42%;
 	padding:0.5em;
 	background-color:#007000;
-	overflow:auto;
+	overflow:hidden;
 }
 
 
@@ -32,7 +32,7 @@
 	color:#AAA;
 	padding:0.5em;
 	background-color:#000070;
-	overflow:auto;
+	overflow:hidden;
 }
 
 #system, .collab {
@@ -91,4 +91,9 @@ html {
 	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;
+}
+
+#systemsContent, #collabsContent, #statsContent {
+	height:84%;
+	overflow:auto;
 }

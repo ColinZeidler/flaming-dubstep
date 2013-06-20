@@ -56,22 +56,22 @@ if option == "system":
 
 elif option == "collab":
 	c = requests.get("http://{}:{}/ui/services/resources".format(ip, port), auth=("user", "video123"))
-	con = requests.get("http://{}:{}/ui/services/connections".format(ip, port), auth=("user", "video123"))
+	#con = requests.get("http://{}:{}/ui/services/connections".format(ip, port), auth=("user", "video123"))
 
-	names = []
-	for item in con.json():
-		if item['action'] =='connected':
-			names.append(item['name'])
+	#names = []
+	#for item in con.json():
+	#	if item['action'] =='connected':
+	#		names.append(item['name'])
 	counter = 1
 	for system in c.json():
 		print "<div id='collab{0}' class=collab onclick='collabClick(\"c{0}\")'>".format(counter)
 		print system['properties']['name'] + ":", system['properties']['type']
-		print "<div id=c{} class=panel>".format(counter)
-		for name in names:
-			print "<div id=system>"
-			print name
-			print "</div>"
-		print "</div>"
+		#print "<div id=c{} class=panel>".format(counter)
+		#for name in names:
+		#	print "<div id=system>"
+		#	print name
+		#	print "</div>"
+		#print "</div>"
 		print "</div>"
 		counter +=1
 	
