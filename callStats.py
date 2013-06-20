@@ -83,6 +83,7 @@ for stream in streams:
 			print vid['source-fps'], "FPS"
 		except:
 			print vid['fps'], "FPS"
+		print "</br>{}p".format(vid['source-height'])
 		print "</p>"
 		print "</div>"
 	print "</div>"

@@ -42,6 +42,13 @@
 	height:3em;
 	padding:0.5em;
 	margin-top:0.5em;
+	-moz-transition-duration:0.75s;
+	-moz-transition-property:all;
+	-moz-transition-timing-function:linear;
+	-webkit-transition-duration:0.75s;
+	-webkit-transition-property:all;
+	-webkit-transition-timing-function:linear;
+
 	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;
@@ -74,6 +81,13 @@ html {
 	top:2em;
 	height:0;
 	overflow:hidden;
+	-moz-transition-duration:0.75s;
+	-mox-transition-property:all;
+	-mox-transition-timing-function:linear;
+	-webkit-transition-duration:0.75s;
+	-webkit-transition-property:all;
+	-webkit-transition-timing-function:linear;
+
 	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;

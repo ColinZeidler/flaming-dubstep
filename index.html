@@ -57,7 +57,7 @@
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						document.getElementById("statsContent").innerHTML = xmlhttp.responseText;
 						if (multi) {
-							setTimeout('getStats(true)', 500);
+							setTimeout('getStats(true)', 2000);
 						}
 					}
 				}
