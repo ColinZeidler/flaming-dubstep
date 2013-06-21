@@ -66,14 +66,18 @@ for item in r.json():
 streams = []
 
 r = requests.get("http://{}:{}/ui/services/system/stream-stats".format(ip, port), auth = ("user", "video123"))
+b = requests.get("http://{}:{}/ui/services/system/build-info".format(ip, port), auth = ("user", "video123"))
 
 for item in r.json()['streams-incoming-video']:
 	streams.append(item)
 
-
+print "<h2>System Stats</h2>"
+print "<div id=buildInfo>Build: {}</br>Built: {}</div>".format(b.json()['version'], b.json()['build_date'])
+print "<h3>Incoming Video</h3>"
+print "<div id=statsContent>"
 for stream in streams:
 	print "<div id=SysStat><b>"
-	print names[stream['location-id']] or "self"
+	print names[stream['location-id']]
 	print "</b>"
 	for vid in stream['streams-incoming-video-status']:
 		print "<div id=stat>"
@@ -83,7 +87,23 @@ for stream in streams:
 			print vid['source-fps'], "FPS"
 		except:
 			print vid['fps'], "FPS"
-		print "</br>{}p".format(vid['source-height'])
+		try:
+			print "</br>{}p".format(vid['source-height'])
+		except:
+			pass
 		print "</p>"
-		print "</div>"
-	print "</div>"
+		print "</div>" #end of stat
+	print "</div>" #end of SysStat
+print "</div>" #end of statsContent
+print "<h3>Outgoing Video</h3>"
+print "<div id=outVidContent>"
+#for loop over all out going streams
+for item in r.json()['streams-outgoing-video']:
+	print "<div id=SysStat><b>{}</b>".format(names[item['location-id']])
+	for stream in item['streams-outgoing-video-status']:
+		print "<div id=stat>"
+		print "<b>{}</b>".format('Video' if stream['resource-id'] == 'video' else 'Collab')
+		print "<p>{} FPS</br>{}p</p>".format(stream['fps'], stream['height'])
+		print "</div>" #end of stat
+	print "</div>" #end of SysStat
+print "</div>" #end of outVidContent

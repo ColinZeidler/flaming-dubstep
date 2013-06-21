@@ -13,6 +13,7 @@
 				loadSysName();
 				getSystems(true);	// true causes the ajax requests to repeat
 				getStats(true);
+				getCollabs(true);
 				//set height of content divs to remainder of parent
 
 				var collab = document.getElementById("collabsContent");
@@ -69,7 +70,7 @@
 				
 				xmlhttp.onreadystatechange=function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("statsContent").innerHTML = xmlhttp.responseText;
+						document.getElementById("stats").innerHTML = xmlhttp.responseText;
 						if (multi) {
 							setTimeout('getStats(true)', 2000);
 						}
@@ -128,28 +129,29 @@
 			</div>
 		</div>
 		</div>
-		<div id="stats"><h3>Incoming Video Stats</h3>
-		<div id=statsContent>
-			<div id=SysStat><b>a stat grouping</b>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
+		<div id="stats"><h2>System Stats</h2>
+			<div id="buildInfo">Build data</div>
+			<h3>Incoming Video</h3>
+			<div id=statsContent>
+				<div id=SysStat><b>a stat grouping</b>
+					<div id=stat> a single stat</div>
+				</div>
+				<div id=SysStat><b>a stat grouping</b>
+					<div id=stat> a single stat</div>
+					<div id=stat> a single stat</div>
+					<div id=stat> a single stat</div>
+				</div>
+				<div id=SysStat><b>a stat grouping</b>
+					<div id=stat> a single stat</div>
+					<div id=stat> a single stat</div>
+				</div>
 			</div>
-			<div id=SysStat><b>a stat grouping</b>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
+			<h3>Outgoing Video</h3>
+			<div id=outVidContent>
+				<div id=SysStat><b>System Name</b>
+					<div id=stat>outgoing stat</div>
+				</div>
 			</div>
-			<div id=SysStat><b>a stat grouping</b>
-				<div id=stat> a single stat</div>
-				<div id=stat> a single stat</div>
-			</div>
-		</div>
 		</div>
 	</body>
 

@@ -3,7 +3,7 @@
 	top:3em;
 	left:10px;
 	padding:0.5em;
-	width:46%;
+	width:30%;
 	height:42%;
 	background-color:#700000;
 	overflow:hidden;
@@ -14,7 +14,7 @@
 	position:absolute;
 	bottom:10px;
 	left:10px;
-	width:46%;
+	width:30%;
 	height:42%;
 	padding:0.5em;
 	background-color:#007000;
@@ -27,12 +27,12 @@
 	top:3em;
 	right:10px;
 	bottom:10px;
-	width:46%;
+	width:66%;
 	height:auto;
 	color:#AAA;
 	padding:0.5em;
 	background-color:#000070;
-	overflow:hidden;
+	overflow:auto;
 }
 
 #system, .collab {
@@ -68,7 +68,7 @@ html {
 
 #stat {
 	background-color:#777;
-	width:7em;
+	width:9em;
 	height:6em;
 	float:left;
 	margin:0.5em;
@@ -93,7 +93,19 @@ html {
 	transition-timing-function:linear;
 }
 
-#systemsContent, #collabsContent, #statsContent {
+#systemsContent, #collabsContent {
 	height:84%;
 	overflow:auto;
 }
+
+
+#buildInfo {
+	right:1em;
+	position:absolute;
+	width:auto;
+}
+
+#statsContent, #outVidContent {
+	overflow:auto;
+}
+
