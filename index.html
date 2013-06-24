@@ -11,10 +11,10 @@
 		function ready() {	//called after the page has loaded
 			systemName = "";
 			collabBaseHeight = document.getElementById("collab1").clientHeight;
-			loadSysName();
-			getSystems(true);	// true causes the ajax requests to repeat
-			getStats(true);
-			getCollabs(true);
+			//loadSysName();
+			//getSystems(true);	// true causes the ajax requests to repeat
+			//getStats(true);
+			//getCollabs(true);
 			//set height of content divs to remainder of parent
 
 			var collab = document.getElementById("collabsContent");
@@ -144,7 +144,22 @@
 				</div>
 				<div id=SysStat><b>a stat grouping</b>
 					<div id=stat> a single stat</div>
-					<div id=stat> a single stat</div>
+					<div id=stat><b>a single</b>
+					<table>
+					  <tr>
+					    <th>Source</th>
+					    <th>Local</th>
+					  </tr>
+					    <td>FPS</td>
+					    <td>FPS</td>
+					  <tr>
+					    <td>size</td>
+					  </tr>
+					  <tr>
+					    <td>kbps</td>
+					  </tr>
+					</table>
+					</div>
 				</div>
 			</div>
 			<h3>Outgoing Video</h3>
