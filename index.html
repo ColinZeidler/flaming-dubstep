@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Placeholder</title>
@@ -5,94 +6,94 @@
 		
 	</head>
 	<script type="text/javascript">
-			var systemName = '';
-			var collabBaseHeight = ''; //the base height to return the collabs to
-			function ready() {	//called after the page has loaded
-				systemName = "";
-				collabBaseHeight = document.getElementById("collab1").clientHeight;
-				loadSysName();
-				getSystems(true);	// true causes the ajax requests to repeat
-				getStats(true);
-				getCollabs(true);
-				//set height of content divs to remainder of parent
+		var systemName = '';
+		var collabBaseHeight = ''; //the base height to return the collabs to
+		function ready() {	//called after the page has loaded
+			systemName = "";
+			collabBaseHeight = document.getElementById("collab1").clientHeight;
+			loadSysName();
+			getSystems(true);	// true causes the ajax requests to repeat
+			getStats(true);
+			getCollabs(true);
+			//set height of content divs to remainder of parent
 
-				var collab = document.getElementById("collabsContent");
-				var system = document.getElementById("systemsContent");
-				var stat = document.getElementById("statsContent");
-			/*	var cParent = collab.parentNode;
-				var sParent = system.parentNode;
-				var statParent = stat.parentNode;
-				console.log(collab.clientHeight);
-				console.log(cParent.clientHeight);
-				console.log(system.clientHeight);
-				console.log(sParent.clientHeight);
-				console.log(stat.clientHeight);
-				console.log(statParent.clientHeight);*/
-			}
-			function loadSysName() {	//called when the system is changed
-				var element = document.getElementById("systemSelector");
-				systemName = element.options[element.selectedIndex].value;
-				document.title = systemName;
-				getSystems(false);	//false prevents the ajax requests from adding up
-				getCollabs(false);
-				getStats(false);
-			}
-			function getSystems(multi) {	//used to get the location info for the remote systems div
-				var xmlhttp=new XMLHttpRequest();
-				
-				xmlhttp.onreadystatechange=function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("systemsContent").innerHTML = xmlhttp.responseText;
-						if (multi) {
-							setTimeout('getSystems(true)', 5000);
-						}
+			var collab = document.getElementById("collabsContent");
+			var system = document.getElementById("systemsContent");
+			var stat = document.getElementById("statsContent");
+		/*	var cParent = collab.parentNode;
+			var sParent = system.parentNode;
+			var statParent = stat.parentNode;
+			console.log(collab.clientHeight);
+			console.log(cParent.clientHeight);
+			console.log(system.clientHeight);
+			console.log(sParent.clientHeight);
+			console.log(stat.clientHeight);
+			console.log(statParent.clientHeight);*/
+		}
+		function loadSysName() {	//called when the system is changed
+			var element = document.getElementById("systemSelector");
+			systemName = element.options[element.selectedIndex].value;
+			document.title = systemName;
+			getSystems(false);	//false prevents the ajax requests from adding up
+			getCollabs(false);
+			getStats(false);
+		}
+		function getSystems(multi) {	//used to get the location info for the remote systems div
+			var xmlhttp=new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("systemsContent").innerHTML = xmlhttp.responseText;
+					if (multi) {
+						setTimeout('getSystems(true)', 5000);
 					}
 				}
-				xmlhttp.open('GET', 'getSystems.php?system='+systemName);
-				xmlhttp.send();
 			}
-			function getCollabs(multi) {	//used to get info for the collabs div
-				var xmlhttp=new XMLHttpRequest();
-				
-				xmlhttp.onreadystatechange=function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("collabsContent").innerHTML = xmlhttp.responseText;
-						if (multi) {
-							setTimeout('getCollabs(true)', 5000);
-						}
+			xmlhttp.open('GET', 'getSystems.php?system='+systemName);
+			xmlhttp.send();
+		}
+		function getCollabs(multi) {	//used to get info for the collabs div
+			var xmlhttp=new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("collabsContent").innerHTML = xmlhttp.responseText;
+					if (multi) {
+						setTimeout('getCollabs(true)', 5000);
 					}
 				}
-				xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
-				xmlhttp.send();
 			}
-			function getStats(multi) {	//used to get call stats for the stats div
-				var xmlhttp=new XMLHttpRequest();
-				
-				xmlhttp.onreadystatechange=function() {
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						document.getElementById("stats").innerHTML = xmlhttp.responseText;
-						if (multi) {
-							setTimeout('getStats(true)', 2000);
-						}
+			xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
+			xmlhttp.send();
+		}
+		function getStats(multi) {	//used to get call stats for the stats div
+			var xmlhttp=new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById("stats").innerHTML = xmlhttp.responseText;
+					if (multi) {
+						setTimeout('getStats(true)', 2000);
 					}
 				}
-				xmlhttp.open('GET', 'stats.php?system='+systemName);
-				xmlhttp.send();
 			}
-			/*function collabClick(collabIndex) { //expands the clicked on collab, opening share options
-				var collab = document.getElementById(collabIndex);
-				var owner = collab.parentNode;
-				if (collab.clientHeight == 0) {
-					collab.style.height = "auto";
-					var tempH = collab.clientHeight;
-					collab.style.height = "0";
-					collab.style.height = tempH + 8 + "px";
-					owner.style.height = collabBaseHeight + 8 + tempH + "px";
-				} else {
-					collab.style.height = "0";
-					owner.style.height = collabBaseHeight + "px";
-				}
-			}*/
+			xmlhttp.open('GET', 'stats.php?system='+systemName);
+			xmlhttp.send();
+		}
+		/*function collabClick(collabIndex) { //expands the clicked on collab, opening share options
+			var collab = document.getElementById(collabIndex);
+			var owner = collab.parentNode;
+			if (collab.clientHeight == 0) {
+				collab.style.height = "auto";
+				var tempH = collab.clientHeight;
+				collab.style.height = "0";
+				collab.style.height = tempH + 8 + "px";
+				owner.style.height = collabBaseHeight + 8 + tempH + "px";
+			} else {
+				collab.style.height = "0";
+				owner.style.height = collabBaseHeight + "px";
+			}
+		}*/
 	</script>
 
 	<body onload='ready()'>
