@@ -103,7 +103,11 @@ try:
 			print "</td><td></td></tr>"
 			print "<tr><td>"
 			#kbps
-			print "{} kbps</td><td></td></tr></table>".format(vid['source-kbps'])
+			try:
+				print vid['source-kbps']
+			except:
+				pass
+			print "kbps</td><td></td></tr></table>"
 			print "</div>" #end of stat
 			Dcount -= 1
 		print "</div>" #end of SysStat
