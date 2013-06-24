@@ -50,7 +50,7 @@
 
 html {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	background-color:212526;
+	background-color:#212526;
 }
 
 #SysStat {
@@ -65,7 +65,7 @@ html {
 
 #stat {
 	background-color:#777;
-	width:9em;
+	width:12em;
 	height:7em;
 	float:left;
 	margin:0.5em;

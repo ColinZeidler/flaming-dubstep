@@ -11,10 +11,10 @@
 		function ready() {	//called after the page has loaded
 			systemName = "";
 			collabBaseHeight = document.getElementById("collab1").clientHeight;
-			//loadSysName();
-			//getSystems(true);	// true causes the ajax requests to repeat
-			//getStats(true);
-			//getCollabs(true);
+			loadSysName();
+			getSystems(true);	// true causes the ajax requests to repeat
+			getStats(true);
+			getCollabs(true);
 			//set height of content divs to remainder of parent
 
 			var collab = document.getElementById("collabsContent");
