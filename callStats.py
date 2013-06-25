@@ -104,10 +104,10 @@ try:
 			print "<tr><td>"
 			#kbps
 			try:
-				print vid['source-kbps']
+				print vid['source-kbps'], "kbps"
 			except:
 				pass
-			print "kbps</td><td></td></tr></table>"
+			print "</td><td></td></tr></table>"
 			print "</div>" #end of stat
 			Dcount -= 1
 		print "</div>" #end of SysStat

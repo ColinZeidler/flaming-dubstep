@@ -64,7 +64,7 @@ elif option == "collab":
 	#		names.append(item['name'])
 	counter = 1
 	for system in c.json():
-		print "<div id='collab{0}' class=collab onclick='collabClick(\"c{0}\")'>".format(counter)
+		print "<div id='collab{0}' class=collab >".format(counter)
 		print system['properties']['name'] + ":", system['properties']['type']
 		#print "<div id=c{} class=panel>".format(counter)
 		#for name in names:

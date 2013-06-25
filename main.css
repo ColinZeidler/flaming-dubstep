@@ -122,3 +122,27 @@ table {
 	margin:auto;
 	text-align:center;
 }
+
+#sysDropDown {
+	position:absolute;
+	top:0;
+	right:0;
+	-moz-transition-duration:1s;
+	-moz-transition-property:all;
+	-moz-transition-timing-function:linear;
+	-webkit-transition-duration:1s;
+	-webkit-transition-property:all;
+	-webkit-transition-timing-function:linear;
+
+	transition-duration:1s;
+	transition-property:all;
+	transition-timing-function:linear;
+	overflow:hidden;
+	height:20px;
+	background-color:#E3E3E3;
+	border-bottom-left-radius:0.5em;
+	border-bottom-right-radius:0.5em;
+	margin-right:10px;
+	cursor:pointer;
+}
+

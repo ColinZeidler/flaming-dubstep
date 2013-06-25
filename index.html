@@ -8,6 +8,7 @@
 	<script type="text/javascript">
 		var systemName = '';
 		var collabBaseHeight = ''; //the base height to return the collabs to
+		var oldW = '';
 		function ready() {	//called after the page has loaded
 			systemName = "";
 			collabBaseHeight = document.getElementById("collab1").clientHeight;
@@ -93,6 +94,30 @@
 				collab.style.height = "0";
 				owner.style.height = collabBaseHeight + "px";
 			}
+		}
+		function sysDropDown() {
+			var tab=document.getElementById('sysDropDown');
+			if (tab.clientHeight == 20) {
+				oldW =  tab.clientWidth;
+				loadSysInfo()
+				tab.style.height = "auto";
+				var tempH = tab.clientHeight;
+				tab.style.height = "20px";
+				console.log(tempH);
+				//tab.style.height =  "200px";
+				
+				tab.style.width = "auto";
+				var tempW = tab.clientWidth;
+				tab.style.width = oldW;
+				console.log(tempW);
+				//tab.style.width = tempW;
+			} else {
+				tab.style.height = "20px";
+				tab.style.width = oldW + "px";
+			}
+		}
+		function loadSysInfo() {
+			document.getElementById('systemInfo').innerHTML = "<b>This is a long title</b>with some info on it"
 		}*/
 	</script>
 
@@ -122,10 +147,10 @@
 		</div>
 		<div id="collabs"><h3>Collabs</h3>
 		<div id=collabsContent>
-			<div id="collab1" class=collab onclick='collabClick("c1")'>a collab
+			<div id="collab1" class=collab >a collab
 				<div id=c1 class=panel>a collab panel</div>	
 			</div>
-			<div id="collab2" class=collab onclick='collabClick("c2")'>a collab
+			<div id="collab2" class=collab >a collab
 				<div id=c2 class=panel>a collab panel</div>	
 			</div>
 		</div>
@@ -169,6 +194,13 @@
 				</div>
 			</div>
 		</div>
+
+		<!--<div id=sysDropDown onclick='sysDropDown()'>
+			<b>System Info</b>
+			<div id=systemInfo>
+			</div>
+			Close this
+		</div>-->
 	</body>
 
 </html>
