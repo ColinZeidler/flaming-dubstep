@@ -66,6 +66,11 @@ try:
 				print vid['source-kbps'], "kbps"
 			except:
 				print "No kbps"
+			print "</br>"
+			try:
+				print "Clam: {}".format(vid['source-clam'])
+			except:
+				print "No Clam Data"
 			print "</p>"
 			print "</div>" #end of stat
 			Dcount -= 1
