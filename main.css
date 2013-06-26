@@ -127,17 +127,18 @@ table {
 	position:absolute;
 	top:0;
 	right:0;
-	-moz-transition-duration:1s;
+	-moz-transition-duration:0.75s;
 	-moz-transition-property:all;
 	-moz-transition-timing-function:linear;
-	-webkit-transition-duration:1s;
+	-webkit-transition-duration:0.75s;
 	-webkit-transition-property:all;
 	-webkit-transition-timing-function:linear;
 
-	transition-duration:1s;
+	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;
 	overflow:hidden;
+	width:90px;
 	height:20px;
 	background-color:#E3E3E3;
 	border-bottom-left-radius:0.5em;
