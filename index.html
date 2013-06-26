@@ -91,6 +91,19 @@
 			xmlhttp.send();
 			document.getElementById('systemInfo').innerHTML = "<img src=\"images/Loading.gif\" width=\"320\" height=\"20\"/>";
 		}
+		function resize() {
+			var stats = document.getElementById('stats');
+			var img = document.getElementById('statButton');
+			if (img.innerHTML.indexOf("expand") !== -1) {
+				//expand div, and change image
+				stats.style.left = "10px";
+				img.innerHTML = "<img src=images/shrink.png width=36 />";
+			} else {
+				// shrink div and change image
+				stats.style.left = "435px";
+				img.innerHTML = "<img src=images/expand.png width=36 />";
+			}
+		}
 	</script>
 
 	<body onload='ready()'>
@@ -167,6 +180,7 @@
 			</div>
 		</div>
 
+		<div id=statButton onclick='resize()'><img src=images/expand.png  width=36 /></div>
 		<div id=sysDropDown onclick='sysDropDown()'>
 			<b>System Info</b>
 			<div id=systemInfo>

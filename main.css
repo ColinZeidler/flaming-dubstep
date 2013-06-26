@@ -3,7 +3,7 @@
 	top:3em;
 	left:10px;
 	padding:0.5em;
-	width:30%;
+	width:400px;
 	height:42%;
 	background-color:#F1F1EB;
 	overflow:hidden;
@@ -14,7 +14,7 @@
 	position:absolute;
 	bottom:10px;
 	left:10px;
-	width:30%;
+	width:400px;
 	height:42%;
 	padding:0.5em;
 	background-color:#F1F1EB;
@@ -27,12 +27,23 @@
 	top:3em;
 	right:10px;
 	bottom:10px;
-	width:66%;
+	left:435px;
+	width:auto;
 	height:auto;
 	color:#000;
 	padding:0.5em;
 	background-color:#F1F1EB;
 	overflow:auto;
+	-moz-transition-duration:0.75s;
+	-moz-transition-property:all;
+	-moz-transition-timing-function:linear;
+	-webkit-transition-duration:0.75s;
+	-webkit-transition-property:all;
+	-webkit-transition-timing-function:linear;
+
+	transition-duration:0.75s;
+	transition-property:all;
+	transition-timing-function:linear;
 }
 
 #system, .collab {
@@ -126,7 +137,7 @@ table {
 #sysDropDown {
 	position:absolute;
 	top:0;
-	right:0;
+	right:10px;
 	-moz-transition-duration:0.75s;
 	-moz-transition-property:all;
 	-moz-transition-timing-function:linear;
@@ -143,7 +154,11 @@ table {
 	background-color:#E3E3E3;
 	border-bottom-left-radius:0.5em;
 	border-bottom-right-radius:0.5em;
-	margin-right:10px;
 	cursor:pointer;
 }
 
+#statButton {
+	position: absolute;
+	top:5px;
+	right:105px;
+}
