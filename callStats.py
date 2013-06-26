@@ -88,26 +88,26 @@ try:
 			print "<div id=stat>"
 			Dcount += 1
 			print "<b>" + vid['title'] +"</b>"
-			print "<table><tr><th>Source</th><th>Local</th></tr>"
-			print "<tr><td>"
+			print "<p>"
 			try:
 				print vid['source-fps'], "FPS"
 			except:
-				pass
-			print "</td><td>{} FPS</td></tr>".format(vid['fps'])
-			print "<tr><td>"
+				try:
+					print vid['fps'], "FPS"
+				except:
+					print "No FPS"
+			print "</br>"
 			try:
 				print "{}p".format(vid['source-height'])
 			except:
-				pass
-			print "</td><td></td></tr>"
-			print "<tr><td>"
+				print "No Height"
+			print "</br>"
 			#kbps
 			try:
 				print vid['source-kbps'], "kbps"
 			except:
-				pass
-			print "</td><td></td></tr></table>"
+				print "No kbps"
+			print "</p>"
 			print "</div>" #end of stat
 			Dcount -= 1
 		print "</div>" #end of SysStat
