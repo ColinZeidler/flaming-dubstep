@@ -21,6 +21,7 @@
 			var element = document.getElementById("systemSelector");
 			systemName = element.options[element.selectedIndex].value;
 			document.title = systemName;
+			loadSysInfo()
 			getSystems(false);	//false prevents the ajax requests from adding up
 			getCollabs(false);
 			getStats(false);
@@ -70,17 +71,25 @@
 		function sysDropDown() {
 			var tab=document.getElementById('sysDropDown');
 			if (tab.clientHeight == 20) {
-				loadSysInfo()
 				tab.style.height =  "150px";
 				
-				tab.style.width = "300px";
+				tab.style.width = "320px";
 			} else {
 				tab.style.height = "20px";
 				tab.style.width =  "90px";
 			}
 		}
 		function loadSysInfo() {
-			document.getElementById('systemInfo').innerHTML = "<p><b>Screens:</b> 3</br><b>Cameras:</b> 2</br><b>HDShare:</b> 192.168.218.124/Hi</br><b>URL:</b> 6063@192.168.217.63</br></p>"
+			var xmlhttp=new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					document.getElementById('systemInfo').innerHTML =  xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open('GET', 'getInfo.php?system='+systemName);
+			xmlhttp.send();
+			document.getElementById('systemInfo').innerHTML = "<img src=\"images/Loading.gif\" width=\"320\" height=\"80\"/>";
 		}
 	</script>
 
