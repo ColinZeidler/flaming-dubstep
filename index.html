@@ -10,11 +10,8 @@
 		var collabBaseHeight = ''; //the base height to return the collabs to
 		function ready() {	//called after the page has loaded
 			systemName = "";
-			collabBaseHeight = document.getElementById("collab1").clientHeight;
 			loadSysName();
-			getSystems(true);	// true causes the ajax requests to repeat
 			getStats(true);
-			getCollabs(true);
 
 		}
 		function loadSysName() {	//called when the system is changed
@@ -22,37 +19,7 @@
 			systemName = element.options[element.selectedIndex].value;
 			document.title = systemName;
 			loadSysInfo()
-			getSystems(false);	//false prevents the ajax requests from adding up
-			getCollabs(false);
 			getStats(false);
-		}
-		function getSystems(multi) {	//used to get the location info for the remote systems div
-			var xmlhttp=new XMLHttpRequest();
-			
-			xmlhttp.onreadystatechange=function() {
-				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById("systemsContent").innerHTML = xmlhttp.responseText;
-					if (multi) {
-						setTimeout('getSystems(true)', 5000);
-					}
-				}
-			}
-			xmlhttp.open('GET', 'getSystems.php?system='+systemName);
-			xmlhttp.send();
-		}
-		function getCollabs(multi) {	//used to get info for the collabs div
-			var xmlhttp=new XMLHttpRequest();
-			
-			xmlhttp.onreadystatechange=function() {
-				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById("collabsContent").innerHTML = xmlhttp.responseText;
-					if (multi) {
-						setTimeout('getCollabs(true)', 5000);
-					}
-				}
-			}
-			xmlhttp.open('GET', 'getCollabs.php?system='+systemName);
-			xmlhttp.send();
 		}
 		function getStats(multi) {	//used to get call stats for the stats div
 			var xmlhttp=new XMLHttpRequest();
@@ -125,21 +92,6 @@
 				<option value="Papaya">Papaya</option>
 			</select>
 		</form>
-		<div id="systems"><h3>Remote Systems</h3>
-		<div id=systemsContent>
-			<div id="system">a system</div>
-		</div>
-		</div>
-		<div id="collabs"><h3>Collabs</h3>
-		<div id=collabsContent>
-			<div id="collab1" class=collab >a collab
-				<div id=c1 class=panel>a collab panel</div>	
-			</div>
-			<div id="collab2" class=collab >a collab
-				<div id=c2 class=panel>a collab panel</div>	
-			</div>
-		</div>
-		</div>
 		<div id="stats"><h2>System Stats</h2>
 			<div id="buildInfo">Build data</div>
 			<h3>Incoming Video</h3>
@@ -180,7 +132,7 @@
 			</div>
 		</div>
 
-		<div id=statButton onclick='resize()'><img src=images/expand.png  width=36 /></div>
+		<div id=statButton onclick='resize()'><img src=images/shrink.png  width=36 /></div>
 		<div id=sysDropDown onclick='sysDropDown()'>
 			<b>System Info</b>
 			<div id=systemInfo>
