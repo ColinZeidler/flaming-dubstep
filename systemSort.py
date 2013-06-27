@@ -1,3 +1,5 @@
+
+#purpose: to provide a single call to get the ip and port of a system by Name
 def getAddr(name):
 
 	systems = {'Avocado':'A', 

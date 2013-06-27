@@ -1,33 +1,9 @@
-#systems {
-	position:absolute;
-	top:3em;
-	left:10px;
-	padding:0.5em;
-	width:400px;
-	height:42%;
-	background-color:#F1F1EB;
-	overflow:hidden;
-}
-
-
-#collabs {
-	position:absolute;
-	bottom:10px;
-	left:10px;
-	width:400px;
-	height:42%;
-	padding:0.5em;
-	background-color:#F1F1EB;
-	overflow:hidden;
-}
-
-
 #stats {
 	position:absolute;
 	top:3em;
 	right:10px;
 	bottom:10px;
-	left:435px;
+	left:10px;
 	width:auto;
 	height:auto;
 	color:#000;
@@ -44,19 +20,6 @@
 	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;
-}
-
-#system, .collab {
-	color:#E3E3E3;
-	font-size:larger;
-	background-color:#777;
-	width:95%;
-	margin:auto;
-	padding:0.5em;
-	margin-top:0.5em;
-
-	-moz-border-radius:0.5em;
-	border-radius:0.5em;
 }
 
 html {
@@ -86,30 +49,6 @@ html {
 	border-bottom-left-radius: 0.5em;
 	border-bottom-right-radius: 0.5em;
 }
-
-.collab .panel {
-	background-color:#F00;
-	position:relative;
-	top:2em;
-	height:0;
-	overflow:hidden;
-	-moz-transition-duration:0.75s;
-	-moz-transition-property:all;
-	-moz-transition-timing-function:linear;
-	-webkit-transition-duration:0.75s;
-	-webkit-transition-property:all;
-	-webkit-transition-timing-function:linear;
-
-	transition-duration:0.75s;
-	transition-property:all;
-	transition-timing-function:linear;
-}
-
-#systemsContent, #collabsContent {
-	height:84%;
-	overflow:auto;
-}
-
 
 #buildInfo {
 	right:1em;
@@ -161,4 +100,5 @@ table {
 	position: absolute;
 	top:5px;
 	right:105px;
+	cursor:pointer;
 }

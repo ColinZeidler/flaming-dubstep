@@ -93,7 +93,13 @@ try:
 			print "<div id=stat>"
 			Dcount += 1
 			print "<b>{}</b>".format('Video' if stream['resource-id'] == 'video' else 'Collab')
-			print "<p>{} FPS</br>{}p</p>".format(stream['fps'], stream['height'])
+			print "<p>{} FPS</br>{}p".format(stream['fps'], stream['height'])
+			print "</br>"
+			try:
+				print "{} kbps".format(stream['kbps'])
+			except:
+				print "No kbps"
+			print "</p>" 
 			print "</div>" #end of stat
 			Dcount -= 1
 		print "</div>" #end of SysStat
