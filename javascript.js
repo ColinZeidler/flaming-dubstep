@@ -15,8 +15,9 @@ function loadSysName() {
 }
 function getStats(multi) {
 	var xmlhttp = new XMLHttpRequest();
+	console.log("getStats called");
 
-	xmlhttp.onreadstatechange=function() {
+	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			document.getElementById("statsContent").innerHTML = xmlhttp.responseText;
 			if (multi) {
@@ -29,8 +30,9 @@ function getStats(multi) {
 }
 function getBuild() {
 	var xmlhttp = new XMLHttpRequest();
+	console.log("getBuild called");
 
-	xmlhttp.onreadstatechange=function() {
+	xmlhttp.onreadystatechange=function() {
 		 console.log("get build readystatechanged");
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			console.log("getbuild State and status good");
@@ -52,8 +54,9 @@ function sysDropDown() {
 }
 function loadSysInfo() {
 	var xmlhttp = new XMLHttpRequest();
+	console.log("loadSysInfo called");
 
-	xmlhttp.onreadstatechange=function() {
+	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			document.getElementById("systemInfo").innerHTML = xmlhttp.responseText;
 		}
