@@ -61,10 +61,14 @@ html {
 	overflow:auto;
 }
 
-#stats h2, #systems h3, #collabs h3 {
+#stats h2 {
 	border-bottom-width:thin;
 	border-color:#000;
 	border-bottom-style:solid;
+}
+
+#stats h3 {
+	clear:both;
 }
 
 table {

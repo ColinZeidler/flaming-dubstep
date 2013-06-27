@@ -33,10 +33,8 @@ except:
 	streams.append("")
 
 Dcount = 0
-print "<h2>System Stats</h2>"
-print "<div id=buildInfo>Build: {}</br>Built: {}</div>".format(b.json()['version'], b.json()['build_date'])
 print "<h3>Incoming Video</h3>"
-print "<div id=statsContent>"
+print "<p>"
 try:
 	for stream in streams:
 		print "<div id=SysStat><b>"
@@ -80,9 +78,9 @@ except:
 	for i in range(0, Dcount):
 		print "</div>"
 	print "<h4>No Incoming Video</h4>"
-print "</div>" #end of statsContent
+print "</p>" #end of statsContent
 print "<h3>Outgoing Video</h3>"
-print "<div id=outVidContent>"
+print "<p>"
 #for loop over all out going streams
 Dcount = 0
 try:
@@ -108,4 +106,4 @@ except:
 	for i in range(0, Dcount):
 		print "</div>"
 	print "<h4>No Out Going Video</h4>"
-print "</div>" #end of outVidContent
+print "</p>"

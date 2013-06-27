@@ -20,19 +20,31 @@
 			document.title = systemName;
 			loadSysInfo()
 			getStats(false);
+			getBuild();
 		}
 		function getStats(multi) {	//used to get call stats for the stats div
 			var xmlhttp=new XMLHttpRequest();
 			
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById("stats").innerHTML = xmlhttp.responseText;
+					document.getElementById("statsContent").innerHTML = xmlhttp.responseText;
 					if (multi) {
 						setTimeout('getStats(true)', 2000);
 					}
 				}
 			}
 			xmlhttp.open('GET', 'stats.php?system='+systemName);
+			xmlhttp.send();
+		}
+		function getBuild() {
+			var xmlhttp=new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status ==200) {
+				document.getElementById("buildInfo").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open('GET', 'getBuild.php?system='+systemName);
 			xmlhttp.send();
 		}
 		function sysDropDown() {
@@ -94,8 +106,9 @@
 		</form>
 		<div id="stats"><h2>System Stats</h2>
 			<div id="buildInfo">Build data</div>
-			<h3>Incoming Video</h3>
 			<div id=statsContent>
+			<h3>Incoming Video</h3>
+			<p>
 				<div id=SysStat><b>a stat grouping</b>
 					<div id=stat> a single stat</div>
 				</div>
@@ -123,12 +136,13 @@
 					</table>
 					</div>
 				</div>
-			</div>
+			</p>
 			<h3>Outgoing Video</h3>
-			<div id=outVidContent>
+			<p>
 				<div id=SysStat><b>System Name</b>
 					<div id=stat>outgoing stat</div>
 				</div>
+			</p>
 			</div>
 		</div>
 
