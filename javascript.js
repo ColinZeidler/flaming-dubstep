@@ -1,14 +1,13 @@
-var systemName = '';
 var systemCount = 1;
 function ready() {
 	systemName = '';
 	loadSysName(document.getElementById('systemSelector'));
-	//getStats(true);
+	getStats(true, document.getElementById('systemSelector').parentNode);
 }
 function loadSysName(obj) {
 	var element = obj;
-	systemName = element.options[element.selectedIndex].value;
-	loadSysInfo();
+	obj.parentNode.id = element.options[element.selectedIndex].value;
+	//loadSysInfo();
 	getStats(false, obj.parentNode);
 	getBuild(obj.parentNode)
 }
@@ -25,11 +24,11 @@ function getStats(multi, obj) {
 				}
 			}
 			if (multi) {
-				setTimeout('getStats(true)', 2000);
+				setTimeout(function(){getStats(true, obj); obj = null}, 2000);
 			}
 		}
 	}
-	xmlhttp.open('GET', 'stats.php?system='+systemName);
+	xmlhttp.open('GET', 'stats.php?system='+obj.id, true);
 	xmlhttp.send();
 }
 function getBuild(obj) {
@@ -46,7 +45,7 @@ function getBuild(obj) {
 			}
 		}
 	}
-	xmlhttp.open('GET', 'getBuild.php?system='+systemName);
+	xmlhttp.open('GET', 'getBuild.php?system='+obj.id, true);
 	xmlhttp.send();
 }
 function sysDropDown() {
@@ -59,7 +58,7 @@ function sysDropDown() {
 		tab.style.width = "90px";
 	}
 }
-function loadSysInfo() {
+/*function loadSysInfo() {
 	var xmlhttp = new XMLHttpRequest();
 
 	xmlhttp.onreadystatechange=function() {
@@ -67,10 +66,10 @@ function loadSysInfo() {
 			document.getElementById("systemInfo").innerHTML = xmlhttp.responseText;
 		}
 	}
-	xmlhttp.open('GET', 'getInfo.php?system='+systemName);
+	xmlhttp.open('GET', 'getInfo.php?system='+obj.id, true);
 	xmlhttp.send();
 	document.getElementById('systemInfo').innerHTML = "<img src=\"images/Loading.gif\" height=\"20\"/>";
-}
+}*/
 function resize(obj) {
 	var stats = obj.parentNode;
 	var img = obj;
@@ -91,8 +90,9 @@ function newSystem() {
 			var newContent = document.createElement('div');
 			newContent.className = 'stats';
 			newContent.innerHTML = xmlhttp.responseText;
-			master.appendChild(newContent);
-			
+			var child = master.appendChild(newContent);
+			getStats(true, child);
+						
 			systemCount += 1;
 
 			var children = master.childNodes;
@@ -102,9 +102,7 @@ function newSystem() {
 			var diff = (width2-50)/width * 100;
 			var n = 0;
 			for (var i = 0; i < children.length; i++) {
-				console.info(children[i]);
 				if (children[i].className == 'stats') {
-				console.info(10 + (n*diff));
 				children[i].style.left = 1.3 + (2.6 * (n)) + (n*diff) + "%";
 				children[i].style.width = diff + "%";
 				n++;
