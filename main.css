@@ -1,4 +1,4 @@
-#stats {
+.stats {
 	position:absolute;
 	top:3em;
 	right:10px;
@@ -27,7 +27,7 @@ html {
 	background-color:#212526;
 }
 
-#SysStat {
+.SysStat {
 	background-color:#222;
 	color:#E3E3E3;
 	width:95%;
@@ -37,7 +37,7 @@ html {
 	border-radius: 1em;
 }
 
-#stat {
+.stat {
 	background-color:#777;
 	min-width:9em;
 	height:7em;
@@ -77,7 +77,7 @@ table {
 	text-align:center;
 }
 
-#sysDropDown {
+.sysDropDown {
 	position:absolute;
 	top:0;
 	right:10px;

@@ -37,12 +37,12 @@ print "<h3>Incoming Video</h3>"
 print "<p>"
 try:
 	for stream in streams:
-		print "<div id=SysStat><b>"
+		print "<div class=SysStat><b>"
 		Dcount += 1
 		print names[stream['location-id']]
 		print "</b>"
 		for vid in stream['streams-incoming-video-status']:
-			print "<div id=stat>"
+			print "<div class=stat>"
 			Dcount += 1
 			print "<b>" + vid['title'] +"</b>"
 			print "<p>"
@@ -85,10 +85,10 @@ print "<p>"
 Dcount = 0
 try:
 	for item in r.json()['streams-outgoing-video']:
-		print "<div id=SysStat><b>{}</b>".format(names[item['location-id']])
+		print "<div class=SysStat><b>{}</b>".format(names[item['location-id']])
 		Dcount += 1
 		for stream in item['streams-outgoing-video-status']:
-			print "<div id=stat>"
+			print "<div class=stat>"
 			Dcount += 1
 			print "<b>{}</b>".format('Video' if stream['resource-id'] == 'video' else 'Collab')
 			print "<p>{} FPS</br>{}p".format(stream['fps'], stream['height'])
