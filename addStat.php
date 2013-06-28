@@ -16,8 +16,9 @@ echo "<h2>System Stats</h2>
 		<option value=\"Newton\">Newton</option>
 		<option value=\"Papaya\">Papaya</option>
 	</select>
-	<div id=statButton onclick='resize(this)'><img src=images/shrink.png  width=36 /></div>
+	<div class=statButton onclick='resize(this)'><img src=images/shrink.png  width=36 /></div>
 	<div id=\"buildInfo\">Build data</div>
+	<div class=closeButton onclick='closeStat(this)'></div>
 	<div id=statsContent>
 </div>"
 ?>

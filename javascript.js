@@ -96,17 +96,17 @@ function newSystem() {
 			systemCount += 1;
 
 			var children = master.childNodes;
-			var left = 10;
 			var width = window.innerWidth;
-			var diff = width / systemCount;
+			var percent = 0
+			var width2 = width/systemCount;
+			var diff = (width2-50)/width * 100;
 			var n = 0;
 			for (var i = 0; i < children.length; i++) {
 				console.info(children[i]);
 				if (children[i].className == 'stats') {
-				console.info(width + ", " + diff);
-				console.info(left + (n*diff));
-				children[i].style.left = left + (n*diff) + "px";
-				children[i].style.width =diff - 25 + "px";
+				console.info(10 + (n*diff));
+				children[i].style.left = 1.3 + (2.6 * (n)) + (n*diff) + "%";
+				children[i].style.width = diff + "%";
 				n++;
 				}
 			}
@@ -114,4 +114,26 @@ function newSystem() {
 	}
 	xmlhttp.open('GET', 'addStat.php');
 	xmlhttp.send();
+}
+function closeStat(obj) {
+	var statDiv = obj.parentNode;
+	var statParent = statDiv.parentNode;
+	statParent.removeChild(statDiv);
+	
+	systemCount -= 1;
+
+	var children = statParent.childNodes;
+	var width = window.innerWidth;
+	var percent = 0
+	var width2 = width/systemCount;
+	var diff = (width2-50)/width * 100;
+	var n = 0;
+	for (var i = 0; i < children.length; i++) {
+		if (children[i].className == 'stats') {
+			children[i].style.left = 1.3 + (2.6 * (n)) + (n*diff) + "%";
+			children[i].style.width = diff + "%";
+			n++;
+		}
+	}
+
 }
