@@ -61,13 +61,13 @@ html {
 	overflow:auto;
 }
 
-#stats h2 {
+.stats h2 {
 	border-bottom-width:thin;
 	border-color:#000;
 	border-bottom-style:solid;
 }
 
-#stats h3 {
+.stats h3 {
 	clear:both;
 }
 
@@ -105,4 +105,10 @@ table {
 	position:absolute;
 	right:1em;
 	top:1em;
+}
+
+#systemSelector {
+	position:absolute;
+	top:5px;
+	left:5px;
 }
