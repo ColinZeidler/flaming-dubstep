@@ -25,7 +25,7 @@ function getStats(multi, obj) {
 					break;
 				}
 			}
-			if (multi) {
+			if (multi && obj.id !== 'None') {
 				setTimeout(function(){getStats(true, obj); obj = null}, 2000);
 			}
 		}
@@ -124,6 +124,8 @@ function newSystem() {
 function closeStat(obj) {
 	var statDiv = obj.parentNode;
 	var statParent = statDiv.parentNode;
+
+	statDiv.id = "None";	//allows the ending of ajax calls for this panel
 	statParent.removeChild(statDiv);
 	
 	systemCount -= 1;
