@@ -1,4 +1,6 @@
 var systemCount = 1;
+var expandedL = '';
+var expandedW = '';
 function ready() {
 	systemName = '';
 	loadSysName(document.getElementById('systemSelector'));
@@ -74,10 +76,16 @@ function resize(obj) {
 	var stats = obj.parentNode;
 	var img = obj;
 	if (img.innerHTML.indexOf("expand") !== -1) {
-		stats.style.left = "10px";
+		expandedL = stats.style.left;
+		expandedW = stats.style.width;
+		stats.style.left = "1.3%";
+		stats.style.width = "97.3958333%";
+		stats.style.zIndex = "100";
 		img.innerHTML = "<img src=images/shrink.png width=36 />";
 	} else {
-		stats.style.left = "435px";
+		stats.style.left = expandedL + "%";
+		stats.style.width = expandedW + "%";
+		stats.style.zIndex = "auto";
 		img.innerHTML = "<img src=images/expand.png width=36 />";
 	}
 }
