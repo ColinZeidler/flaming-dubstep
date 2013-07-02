@@ -83,8 +83,8 @@ function resize(obj) {
 		stats.style.zIndex = "100";
 		img.innerHTML = "<img src=images/shrink.png width=36 />";
 	} else {
-		stats.style.left = expandedL + "%";
-		stats.style.width = expandedW + "%";
+		stats.style.left = expandedL;
+		stats.style.width = expandedW;
 		stats.style.zIndex = "auto";
 		img.innerHTML = "<img src=images/expand.png width=36 />";
 	}
@@ -98,6 +98,7 @@ function newSystem() {
 			var newContent = document.createElement('div');
 			newContent.className = 'stats';
 			newContent.innerHTML = xmlhttp.responseText;
+			newContent.id = "Avocado";
 			var child = master.appendChild(newContent);
 			getStats(true, child);
 						
