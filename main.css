@@ -121,12 +121,27 @@ table {
 	width:100%;
 }
 
+.closeButtonBottom {
+	width:1em;
+	height:1em;
+	top:0;
+	right:0;
+	background-image:url(images/close-hover.png);
+	position:absolute;
+}
 .closeButton {
 	width:1em;
 	height:1em;
 	top:0;
 	right:0;
-	background-color:#00F;
+	background-image:url(images/close.png);
 	position:absolute;
 	cursor:pointer;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+.closeButton:hover {
+	opacity:0;
 }

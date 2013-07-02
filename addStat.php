@@ -18,6 +18,7 @@ echo "<h2>System Stats</h2>
 	</select>
 	<div class=statButton onclick='resize(this)'><img src=images/expand.png  width=36 /></div>
 	<div id=\"buildInfo\">Build data</div>
+	<div class=closeButtonBottom></div>
 	<div class=closeButton onclick='closeStat(this)'></div>
 	<div id=statsContent>
 </div>"
