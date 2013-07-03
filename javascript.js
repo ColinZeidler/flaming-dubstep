@@ -101,7 +101,8 @@ function newSystem() {
 			newContent.id = "Avocado";
 			var child = master.appendChild(newContent);
 			getStats(true, child);
-						
+			getBuild(child);
+
 			systemCount += 1;
 
 			var children = master.childNodes;
