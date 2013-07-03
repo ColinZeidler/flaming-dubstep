@@ -100,10 +100,14 @@ function newSystem() {
 			newContent.innerHTML = xmlhttp.responseText;
 			newContent.id = "Avocado";
 			var child = master.appendChild(newContent);
+
 			getStats(true, child);
 			getBuild(child);
 
 			systemCount += 1;
+			child.style.left = "100%";
+			temp = child.clientWidth;
+			temp = null;
 
 			var children = master.childNodes;
 			var width = window.innerWidth;
