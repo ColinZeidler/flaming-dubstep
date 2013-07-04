@@ -75,12 +75,6 @@ html {
 	clear:both;
 }
 
-table {
-	width:95%;
-	margin:auto;
-	text-align:center;
-}
-
 .sysDropDown {
 	position:absolute;
 	top:0;
@@ -143,5 +137,19 @@ table {
 	transition: opacity 0.5s ease-in-out;
 }
 .closeButton:hover {
+	opacity:0;
+}
+.statButtonTop {
+	position:absolute;
+	top:0;
+	left:0;
+	width:36px;
+	height:36px;
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+}
+.statButtonTop:hover {
 	opacity:0;
 }

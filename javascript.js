@@ -81,12 +81,12 @@ function resize(obj) {
 		stats.style.left = "1.3%";
 		stats.style.width = "97.3958333%";
 		stats.style.zIndex = "100";
-		img.innerHTML = "<img src=images/shrink.png width=36 />";
+		img.innerHTML = "<div class=statButtonTop><img src=images/shrink.png width=36 height=36 /></div><img src=images/shrink-bottom.png width=36 height=36 />";
 	} else {
 		stats.style.left = expandedL;
 		stats.style.width = expandedW;
 		stats.style.zIndex = "auto";
-		img.innerHTML = "<img src=images/expand.png width=36 />";
+		img.innerHTML = "<div class=statButtonTop><img src=images/expand.png width=36 height=36 /></div><img src=images/expand-bottom.png width=36 height=36 />";
 	}
 }
 function newSystem() {
@@ -106,9 +106,10 @@ function newSystem() {
 
 			systemCount += 1;
 			child.style.left = "100%";
-			temp = child.clientWidth;
+			temp = child.clientWidth;	//forces the browser to ajust the position of the new element
 			temp = null;
 
+			//force all resize images to the expand version
 			var children = master.childNodes;
 			var width = window.innerWidth;
 			var percent = 0
