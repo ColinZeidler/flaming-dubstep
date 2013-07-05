@@ -75,10 +75,26 @@ html {
 	clear:both;
 }
 
+.sysDropTab {
+	position:relative;
+	height:16px;
+	float:right;
+	padding-right:8px;
+	padding-left:8px;
+	background-color:#E3E3E3;
+	border-bottom-left-radius:0.5em;
+	border-bottom-right-radius:0.5em;
+	cursor:pointer;
+}
+
 .sysDropDown {
 	position:absolute;
 	top:0;
-	right:10px;
+	right:4em;
+}
+.systemInfo {
+	padding-left:8px;
+	padding-right:8px;
 	-moz-transition-duration:0.75s;
 	-moz-transition-property:all;
 	-moz-transition-timing-function:linear;
@@ -89,13 +105,9 @@ html {
 	transition-duration:0.75s;
 	transition-property:all;
 	transition-timing-function:linear;
-	overflow:hidden;
-	width:90px;
-	height:20px;
+	height:0;
 	background-color:#E3E3E3;
-	border-bottom-left-radius:0.5em;
-	border-bottom-right-radius:0.5em;
-	cursor:pointer;
+	overflow:hidden;
 }
 
 .statButton {

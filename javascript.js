@@ -9,7 +9,7 @@ function ready() {
 function loadSysName(obj) {
 	var element = obj;
 	obj.parentNode.id = element.options[element.selectedIndex].value;
-	//loadSysInfo();
+	loadSysInfo(obj.parentNode);
 	getStats(false, obj.parentNode);
 	getBuild(obj.parentNode)
 }
@@ -50,28 +50,49 @@ function getBuild(obj) {
 	xmlhttp.open('GET', 'getBuild.php?system='+obj.id, true);
 	xmlhttp.send();
 }
-function sysDropDown() {
-	var tab=document.getElementById('sysDropDown');
-	if (tab.clientHeight == 20) {
-		tab.style.height = "150px";
-		tab.style.width = "320px";
-	} else {
-		tab.style.height = "20px";
-		tab.style.width = "90px";
+function sysDropDown(obj) {
+	var children = obj.childNodes;
+	for (var i = 0; i < children.length; i++) {
+		if (children[i].className == "sysDropTab")
+			var dropTab = children[i];
+		if (children[i].className == "systemInfo")
+			var systemTab = children[i];
 	}
+	
+	if (systemTab.clientHeight == 0) {
+	systemTab.style.height = "120px";
+	dropTab.innerHTML = "CLOSE <img src=images/info-up.png />";
+	} else {
+	systemTab.style.height = "0";
+	dropTab.innerHTML = "OPEN <img src=images/info-arrow.png />";
+	}
+
 }
-/*function loadSysInfo() {
+function loadSysInfo(obj) {
 	var xmlhttp = new XMLHttpRequest();
+
+	var children = obj.childNodes;
+
+	for (var i = 0; i < children.length; i++) {
+		if (children[i].className == "sysDropDown") {
+		var drop = children[i];
+		var children = drop.childNodes;
+		for (var i = 0; i < children.length; i++) {
+			if (children[i].className == "systemInfo")
+				var systemTab = children[i];
+		}
+		}
+	}
 
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("systemInfo").innerHTML = xmlhttp.responseText;
+			systemTab.innerHTML = xmlhttp.responseText;
 		}
 	}
 	xmlhttp.open('GET', 'getInfo.php?system='+obj.id, true);
 	xmlhttp.send();
-	document.getElementById('systemInfo').innerHTML = "<img src=\"images/Loading.gif\" height=\"20\"/>";
-}*/
+	systemTab.innerHTML = "<img src=\"images/Loading.gif\" height=\"20\"/>";
+}
 function resize(obj) {
 	var stats = obj.parentNode;
 	var img = obj;
@@ -102,6 +123,7 @@ function newSystem() {
 			var child = master.appendChild(newContent);
 
 			getStats(true, child);
+			loadSysInfo(child);
 			getBuild(child);
 
 			systemCount += 1;
