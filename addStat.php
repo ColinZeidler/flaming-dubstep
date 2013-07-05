@@ -19,7 +19,7 @@ echo "<h2>System Stats</h2>
 	<div class=statButton onclick='resize(this)'><div class=statButtonTop><img src=images/expand.png  width=36 /></div><img src=images/expand-bottom.png  width=36 /></div>
 	<div id=\"buildInfo\">Build data</div>
 	<div class=sysDropDown onclick='sysDropDown(this)'>
-		<div class=systemInfo>Hi hi ipsum lorem toldar, the black monekey has fled</br> hi2</div>
+		<div class=systemInfo>Hi hi ipsum lorem toldar, ipsum loding index javascript</br> hi2</div>
 		<div class=sysDropTab>OPEN<img src=images/info-arrow.png  /> </div>
 	</div>
 	<div class=closeButtonBottom></div>
