@@ -165,3 +165,19 @@ html {
 .statButtonTop:hover {
 	opacity:0;
 }
+#chartLink {
+	position:absolute;
+	top:8px;
+	right:10px;
+	background-color:#F1F1EB;
+	padding:4px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+#chartLink:link {
+	text-decoration:none;
+}
+#chartLink:active {
+	background-color:#222;
+	color:#FFF;
+}
