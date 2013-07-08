@@ -14,10 +14,12 @@ var bitArray = [[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
                 [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]];
 var System = "Avocado";
 google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(updateChart);
+google.setOnLoadCallback(function() {updateChart(false);});
+var chart;
+var options;
+var data;
 
-
-function updateChart() {
+function updateChart(reDraw) {
  //get new data  formatted as ["Time, "out Rate", "in Rate]
  var xmlhttp = new XMLHttpRequest();
  xmlhttp.onreadystatechange=function() {
@@ -34,9 +36,14 @@ function updateChart() {
     newdata[i] = [xArray[i], bitArray[i][0], bitArray[i][1]];
    }
    var finalData = [['Time Past', 'Outgoing Bit Rate', 'Incoming Bit Rate']]
-   finalData.push.apply(finalData, newdata)
-   drawChart(finalData);
-   setTimeout('updateChart()', 2000)
+   finalData.push.apply(finalData, newdata);
+   if (reDraw) {
+    data = google.visualization.arrayToDataTable(finalData);
+    chart.draw(data, options);
+   } else {
+    drawChart(finalData);
+   }
+   setTimeout(function() {updateChart(true);}, 2000)
   }
  }
  xmlhttp.open('GET', 'bitRate.php?system='+System, true);
@@ -45,9 +52,9 @@ function updateChart() {
 
 
 function drawChart(newdata) {
- var data = google.visualization.arrayToDataTable(newdata);
- var options = {title: 'System BitRate', hAxis: {title: 'Seconds Ago'}, vAxis: {title: 'kbps'}, backgroundColor: '#F1F1EB'};
- var chart = new google.visualization.LineChart(document.getElementById('chart'));
+ data = google.visualization.arrayToDataTable(newdata);
+ options = {title: 'System BitRate', hAxis: {title: 'Seconds Ago'}, vAxis: {title: 'kbps', minValue: 0}, backgroundColor: '#F1F1EB'};
+ chart = new google.visualization.LineChart(document.getElementById('chart'));
  chart.draw(data, options);
 }
 
