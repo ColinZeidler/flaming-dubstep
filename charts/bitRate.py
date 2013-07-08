@@ -18,11 +18,12 @@ totalOut = 0
 for stream in r.json()['streams-incoming-video']:
     if "Self" != names[stream['location-id']]:
         for vid in stream['streams-incoming-video-status']:
-            totalIn += int(vid['source-kbps'])
+            if "mini" not in vid['title']: 
+                totalIn += int(vid['source-kbps'])
 
 for item in r.json()['streams-outgoing-video']:
     if "Self" != names[item['location-id']]:
         for stream in item['streams-outgoing-video-status']:
             totalOut += int(stream['kbps'])
 
-print totalIn, totalOut
+print "{}, {}".format(totalOut, totalIn)
