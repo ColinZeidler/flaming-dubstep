@@ -31,7 +31,7 @@ function updateChart(reDraw) {
    bitArray.push(temp);
    //dataArray.shift() //removes old data
    bitArray.shift();
-   var newdata = [62];
+   var newdata = [];
    for (var i = 0; i < xArray.length; i++ ) {
     newdata[i] = [xArray[i], bitArray[i][0], bitArray[i][1]];
    }
@@ -62,3 +62,65 @@ function drawChart(newdata) {
 function loadSysName(obj) {
  System = obj.options[obj.selectedIndex].value;
 }
+
+
+//graph object
+function Graph(sys) {
+ this.name = sys;
+ this.bitArray = [[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],
+                [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]];
+ this.data;
+ this.chart = new google.visualization.LineChart(document.getElementById(this.name));
+ this.options = {title: 'System Bit Rate', hAxis: {title: 'Seconds Ago'}, vAxis: {title: 'kbps', minValue: 0}, backgroundColor: '#F1F1EB'};
+ console.info(this.name + " created");
+}
+
+Graph.prototype.drawChart = function () {
+ chart.draw(this.data, this.options);
+}
+
+Graph.prototype.updateData = function() {
+ var xmlhttp = new XMLHttpRequest();
+ xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   //parse the system stat into ints
+   var temp = xmlhttp.responseText.split(", ");
+   temp[0] = parseInt(temp[0]);
+   temp[1] = parseInt(temp[1]);
+
+   //push new data onto the bit array
+   this.bitArray.push(temp);
+   //dataArray.shift() //removes old data
+   this.bitArray.shift();
+   
+   //create new combined array with x pos and bit data
+   var newdata = [];
+   for (var i = 0; i < xArray.length; i++ ) {
+    newdata[i] = [xArray[i], this.bitArray[i][0], this.bitArray[i][1]];
+   }
+
+   //create titles and push to top of array
+   var finalData = [['Time Past', 'Outgoing Bit Rate', 'Incoming Bit Rate']]
+   finalData.push.apply(finalData, newdata);
+
+   this.data = google.visualization.arrayToDataTable(finalData)
+   this.drawChart();
+   
+   setTimeout(function() {this.updateData();}, 2000)
+  }
+ }
+ xmlhttp.open('GET', 'bitRate.php?system='+this.name, true);
+ xmlhttp.send();
+}
+
+Graph.prototype.changeName = function(name) {
+ this.name = name;
+}
+
