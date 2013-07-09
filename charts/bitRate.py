@@ -15,15 +15,21 @@ r = requests.get("http://{}:{}/ui/services/system/stream-stats".format(ip, port)
 totalIn = 0
 totalOut = 0
 
-for stream in r.json()['streams-incoming-video']:
-    if "Self" != names[stream['location-id']]:
-        for vid in stream['streams-incoming-video-status']:
-            if "mini" not in vid['title']: 
-                totalIn += int(vid['source-kbps'])
+try:
+    for stream in r.json()['streams-incoming-video']:
+        if "Self" != names[stream['location-id']]:
+            for vid in stream['streams-incoming-video-status']:
+                if "mini" not in vid['title']: 
+                    totalIn += int(vid['source-kbps'])
+except:
+    totalIn = 0
 
-for item in r.json()['streams-outgoing-video']:
-    if "Self" != names[item['location-id']]:
-        for stream in item['streams-outgoing-video-status']:
-            totalOut += int(stream['kbps'])
+try:
+    for item in r.json()['streams-outgoing-video']:
+        if "Self" != names[item['location-id']]:
+            for stream in item['streams-outgoing-video-status']:
+                totalOut += int(stream['kbps'])
+except:
+    totalOut = 0;
 
 print "{}, {}".format(totalOut, totalIn)
