@@ -5,12 +5,10 @@
 .stats {
 	float:left;
 	position:relative;
-	padding:8px;
+	padding:0;
 	margin:0.25em;
 	width:910px;
-	height:530px;
+	overflow:hidden;
+	height:535px;
 	left:auto;
-}
-#systemSelector {
-	position:static;
 }

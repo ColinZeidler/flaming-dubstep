@@ -13,7 +13,7 @@ function newSection(sys) {
  var parentDiv = document.getElementById('floatBox');
  var newContent = document.createElement('div');
  newContent.className = 'stats';
- newContent.innerHTML = "   <select id=\"systemSelector\" onchange='loadSysName(this)'>   <option value=\"Avocado\">Avocado</option>   <option value=\"Banana\">Banana</option>   <option value=\"Coconut\">Coconut</option>   <option value=\"Duku\">Duku</option>   <option value=\"Emblic\">Emblic</option>   <option value=\"Fig\">Fig</option>   <option value=\"Galia\">Galia</option>   <option value=\"Honeydew\">Honeydew</option>   <option value=\"Imbe\">Imbe</option>   <option value=\"Jalapeno\">Jalapeno</option>   <option value=\"Kiwi\">Kiwi</option>   <option value=\"Loganberry\">Loganberry</option>   <option value=\"Newton\">Newton</option>   <option value=\"Papaya\">Papaya</option>  </select>  <div id=chart style=\"width:900px; height:500px;\"></div>"
+ newContent.innerHTML = "   <select id=\"systemSelector\" onchange='loadSysName(this)'>   <option value=\"Avocado\">Avocado</option>   <option value=\"Banana\">Banana</option>   <option value=\"Coconut\">Coconut</option>   <option value=\"Duku\">Duku</option>   <option value=\"Emblic\">Emblic</option>   <option value=\"Fig\">Fig</option>   <option value=\"Galia\">Galia</option>   <option value=\"Honeydew\">Honeydew</option>   <option value=\"Imbe\">Imbe</option>   <option value=\"Jalapeno\">Jalapeno</option>   <option value=\"Kiwi\">Kiwi</option>   <option value=\"Loganberry\">Loganberry</option>   <option value=\"Newton\">Newton</option>   <option value=\"Papaya\">Papaya</option>  </select>  <div class=closeButtonBottom></div>	<div class=closeButton onclick='closeSection(this)'></div> <div id=chart style=\"width:900px; height:500px;\"></div>	"
  newContent.id = sys;
  var child = parentDiv.appendChild(newContent);
  graphList.push(new Graph(child));
@@ -77,8 +77,9 @@ Graph.prototype.updateData = function() {
 
    graphItem.data = google.visualization.arrayToDataTable(finalData)
    graphItem.drawChart();
-   
-   setTimeout(function() {graphItem.updateData();}, 2000)
+   if (graphItem.name !== "None") {
+    setTimeout(function() {graphItem.updateData();}, 2000)
+   }
   }
  }
  xmlhttp.open('GET', 'bitRate.php?system='+this.name, true);
@@ -101,4 +102,20 @@ function loadSysName(obj) {
    break;
   }
  }
+}
+
+function closeSection(obj) {
+ var parentDiv = obj.parentNode;
+ 
+ //get Graph based on div
+ for (var i = 0; i < graphList.length; i ++) {
+  if (graphList[i].div == parentDiv) {
+   graphList[i].changeName("None");
+   graphList.splice(i, 1);	//remove element i from the array
+   break;
+  }
+ }
+
+ var statParent = parentDiv.parentNode;
+ statParent.removeChild(parentDiv);
 }
