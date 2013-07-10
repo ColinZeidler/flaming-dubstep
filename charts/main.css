@@ -1,5 +1,16 @@
 #chart {
-	width:900px;
-	margin-left:auto;
-	margin-right:auto;
+	position:static;
+	top:30px;
+}
+.stats {
+	float:left;
+	position:relative;
+	padding:8px;
+	margin:0.25em;
+	width:910px;
+	height:530px;
+	left:auto;
+}
+#systemSelector {
+	position:static;
 }
