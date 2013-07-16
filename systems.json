@@ -1,0 +1,114 @@
+{
+"Passports" : {
+ "Mango" : {
+  "ip" : "192.168.218.124",
+  "systems" : {
+   "A" : 64100,
+   "B" : 64101,
+   "C" : 64102,
+   "D" : 64103
+  }
+ },
+ "Pineapple" : {
+  "ip" : "192.168.218.123",
+  "systems" : {
+   "G" : 64100,
+   "H" : 64101,
+   "I" : 64102
+  }
+ },
+ "Radish" : {
+  "ip" : "192.168.218.128",
+  "systems" : {
+   "P" : 64100
+  }
+ }
+},
+
+"Systems" : {
+ "A" : {
+  "name" : "Avocado",
+  "ip" : "",
+  "port" : 64100,
+  "passport" : "Mango"
+ },
+ "B" : {
+  "name" : "Banana",
+  "ip" : "",
+  "port" : 64101,
+  "passport" : "Mango"
+ },
+ "C" : {
+  "name" : "Coconut",
+  "ip" : "",
+  "port" : 64102,
+  "passport" : "Mango"
+ },
+ "D" : {
+  "name" : "Duku", 
+  "ip" : "",
+  "port" : 64103,
+  "passport" : "Mango"
+ },
+ "E" : {
+  "name" : "Emblic",
+  "ip" : "",
+  "port" : 80,
+  "passport" : "None"
+ }
+ "F" : {
+  "name" : "Fig",
+  "ip" : "",
+  "port" : 80,
+  "passport" : "None"
+ }
+ "G" : {
+  "name" : "Galia",
+  "ip" : "",
+  "port" : 64100,
+  "passport" : "Pineapple"
+ }
+ "H" : {
+  "name" : "Honeydew",
+  "ip" : "",
+  "port" : 64101,
+  "passport" : "Pineapple"
+ }
+ "I" : {
+  "name" : "Imbe",
+  "ip" : "",
+  "port" : 64102,
+  "passport" : "Pineapple"
+ }
+ "J" : {
+  "name" : "Jalapeno",
+  "ip" : "",
+  "port" : 80,
+  "passport" : "None"
+ }
+ "K" : {
+  "name" : "Kiwi",
+  "ip" : "",
+  "port" 80,
+  "passport" : "None"
+ }
+ "L" : {
+  "name" : "Loganberry",
+  "ip" : "",
+  "port" : 80,
+  "passport" : "None"
+ }
+ "N" : {
+  "name" : "Newton",
+  "ip" : "",
+  "port" : 80,
+  "passport" : "None"
+ }
+ "P" : {
+  "name" : "Papaya"
+  "ip" : "",
+  "port" : 64100,
+  "passport" : "Radish"
+ }
+}
+}
