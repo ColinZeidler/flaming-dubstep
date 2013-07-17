@@ -55,57 +55,57 @@
   "ip" : "",
   "port" : 80,
   "passport" : "None"
- }
+ },
  "F" : {
   "name" : "Fig",
   "ip" : "",
   "port" : 80,
   "passport" : "None"
- }
+ },
  "G" : {
   "name" : "Galia",
   "ip" : "",
   "port" : 64100,
   "passport" : "Pineapple"
- }
+ },
  "H" : {
   "name" : "Honeydew",
   "ip" : "",
   "port" : 64101,
   "passport" : "Pineapple"
- }
+ },
  "I" : {
   "name" : "Imbe",
   "ip" : "",
   "port" : 64102,
   "passport" : "Pineapple"
- }
+ },
  "J" : {
   "name" : "Jalapeno",
   "ip" : "",
   "port" : 80,
   "passport" : "None"
- }
+ },
  "K" : {
   "name" : "Kiwi",
   "ip" : "",
-  "port" 80,
+  "port" : 80,
   "passport" : "None"
- }
+ },
  "L" : {
   "name" : "Loganberry",
   "ip" : "",
   "port" : 80,
   "passport" : "None"
- }
+ },
  "N" : {
   "name" : "Newton",
   "ip" : "",
   "port" : 80,
   "passport" : "None"
- }
+ },
  "P" : {
-  "name" : "Papaya"
+  "name" : "Papaya",
   "ip" : "",
   "port" : 64100,
   "passport" : "Radish"

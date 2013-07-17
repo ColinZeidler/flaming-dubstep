@@ -1,0 +1,29 @@
+#content {
+	width:80%;
+	margin:auto;
+	background-color:#F1F1EB;
+	padding:0.5em;
+	height:auto;
+}
+
+.Systems {
+}
+
+.Passports {
+}
+
+.system, .passport {
+	margin:0.5em;
+	padding:0.5em;
+	background-color:#DBDBD9;
+	display:inline-block;
+
+	border-color:#807F7E;
+	border-width:1px;
+	border-style:solid;
+	border-radius:0.5em;
+}
+
+h2 {
+	color:#F1F1EB;
+}
