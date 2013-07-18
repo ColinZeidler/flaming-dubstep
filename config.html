@@ -11,6 +11,11 @@
   <div id = header> </div>
   <h2>System Stats Configuration Page</h2>
   <div id = content>
+   <div class = floatright>
+   <button onclick='submit()'>Submit Changes</button>
+   <button id=deletebutton disabled="disabled" onclick='deleteSelected()'>Delete Selected</button>
+   <button id=editbutton onclick='editToggle()'>Enable Deletion</button>
+   </div>
     <div class = Passports>
      <h3>Passport Config</h3>
      <button onclick='addItem("passport")'>New Passport</button>
@@ -23,7 +28,6 @@
      <div id = Systems>
      </div>
     </div>
-    <button onclick='submit()'>Test</button>
   </div>
   <div id = footer> </div>
  </body>
