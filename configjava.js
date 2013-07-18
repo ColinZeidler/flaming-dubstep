@@ -1,4 +1,6 @@
 var jsonFile;
+var selected = [];
+var editing = false;
 
 function loadData() {
  var http_r = new XMLHttpRequest();
@@ -19,12 +21,14 @@ function addItem(type) {
   var parentDiv = document.getElementById('Systems');
   var system  = document.createElement('div');
   system.className = "system";
+  system.onclick = function() {select(this);};
   system.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name ></td></tr><tr><td>IP:</td><td><input type = text name = ip ></td></tr><tr><td>Passport:</td><td><input type = text name = passport </td></tr><tr><td>Port:</td><td><input type = number name = port ></td></tr></table>";
  parentDiv.appendChild(system);
  } else if (type == "passport") {
   var parentDiv = document.getElementById('Passports');
   var passport = document.createElement('div');
   passport.className = "passport";
+  passport.onclick = function() {select(this);};
   passport.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name ></td></tr><tr><td>IP:</td><td><input type  = text name = ip ></td></tr></table>";
   parentDiv.appendChild(passport);
  }
@@ -37,6 +41,7 @@ function readData() {
   if (pp.hasOwnProperty(passport)) {
    var passData = document.createElement('div');
    passData.className = "passport";
+   passData.onclick = function() {select(this);};
 
    passData.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name value = " + passport + "></td></tr><tr><td>IP:</td><td><input type  = text name = ip value = \"" + pp[passport].ip + "\"></td></tr></table>";
    PassDiv.appendChild(passData);
@@ -49,6 +54,7 @@ function readData() {
   if (sys.hasOwnProperty(system)) {
    var sysData = document.createElement('div');
    sysData.className = "system";
+   sysData.onclick = function() {select(this);};
 
    sysData.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name value = " +sys[system].name+ "></td></tr><tr><td>IP:</td><td><input type = text name = ip value = " +sys[system].ip+ "></td></tr><tr><td>Passport:</td><td><input type = text name = passport value = " + sys[system].passport+ "></td></tr><tr><td>Port:</td><td><input type = number name = port value = " + sys[system].port+ "></td></tr></table>";
 //   console.info(system);
@@ -117,4 +123,43 @@ function submit() {
  http_r.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
  http_r.send(json);
 
+}
+
+function select(obj) {
+ if (editing == true) {
+  var pos = selected.indexOf(obj);
+  if (pos == -1) {
+   //add to array
+   selected.push(obj);
+   obj.className += " selected";
+  } else {
+   //remove from array
+   selected.splice(pos,1);
+   obj.className = obj.className.split(" ")[0];
+  }
+ }
+}
+
+function deleteSelected() {
+ /*for (var item in selected) {
+  console.info(selected[item]);
+  selected[item].parentNode.removeChild(selected[item]);
+ }*/
+ while (selected.length > 0) {
+  var item  = selected.pop();
+  item.parentNode.removeChild(item);
+ }
+}
+
+function editToggle() {
+ if (editing == true) {
+  editing = false;
+  document.getElementById('deletebutton').disabled = "disabled";
+  document.getElementById('editbutton').innerHTML = "Enable Deletion";
+  selected = [];
+ } else if (editing == false) {
+  editing = true;
+  document.getElementById('deletebutton').disabled = false;
+  document.getElementById('editbutton').innerHTML = "Disable Deletion";
+ }
 }
