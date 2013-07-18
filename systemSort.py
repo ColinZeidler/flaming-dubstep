@@ -11,4 +11,4 @@ def getAddr(name):
 		ip = jsonList['Passports'][system['passport']]['ip']
 
 	port = system['port']	#gets the port
-	print ip, port
+	return (ip, port)
