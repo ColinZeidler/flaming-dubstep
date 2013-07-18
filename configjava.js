@@ -14,6 +14,22 @@ function loadData() {
  http_r.send();
 }
 
+function addItem(type) {
+ if (type == "system") {
+  var parentDiv = document.getElementById('Systems');
+  var system  = document.createElement('div');
+  system.className = "system";
+  system.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name ></td></tr><tr><td>IP:</td><td><input type = text name = ip ></td></tr><tr><td>Passport:</td><td><input type = text name = passport </td></tr><tr><td>Port:</td><td><input type = number name = port ></td></tr></table>";
+ parentDiv.appendChild(system);
+ } else if (type == "passport") {
+  var parentDiv = document.getElementById('Passports');
+  var passport = document.createElement('div');
+  passport.className = "passport";
+  passport.innerHTML = "<table><tr><td>Name:</td><td><input type = text name = name ></td></tr><tr><td>IP:</td><td><input type  = text name = ip ></td></tr></table>";
+  parentDiv.appendChild(passport);
+ }
+}
+
 function readData() {
  var pp = jsonFile.Passports;
  var PassDiv = document.getElementById('Passports')
