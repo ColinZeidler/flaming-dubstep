@@ -29,6 +29,6 @@ h2 {
 }
 
 .selected {
-	border-color:red;
-	border-width:0.5em;
+	border-color:#454034;
+	border-width:2px;
 }

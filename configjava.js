@@ -129,10 +129,12 @@ function select(obj) {
  if (editing == true) {
   var pos = selected.indexOf(obj);
   if (pos == -1) {
+   console.info("adding");
    //add to array
    selected.push(obj);
    obj.className += " selected";
   } else {
+   console.info("removing");
    //remove from array
    selected.splice(pos,1);
    obj.className = obj.className.split(" ")[0];
@@ -141,10 +143,6 @@ function select(obj) {
 }
 
 function deleteSelected() {
- /*for (var item in selected) {
-  console.info(selected[item]);
-  selected[item].parentNode.removeChild(selected[item]);
- }*/
  while (selected.length > 0) {
   var item  = selected.pop();
   item.parentNode.removeChild(item);
@@ -153,10 +151,15 @@ function deleteSelected() {
 
 function editToggle() {
  if (editing == true) {
-  editing = false;
   document.getElementById('deletebutton').disabled = "disabled";
   document.getElementById('editbutton').innerHTML = "Enable Deletion";
-  selected = [];
+  if (selected.length > 0) {
+   var clone = selected.slice(0);
+   for (var item in clone){
+    select(clone[item]);
+   }
+  }
+  editing = false;
  } else if (editing == false) {
   editing = true;
   document.getElementById('deletebutton').disabled = false;
