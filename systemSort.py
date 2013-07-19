@@ -1,7 +1,7 @@
 #purpose: to provide a single call to get the ip and port of a system by Name
 def getAddr(name):
 	import json
-	jfile = open('systems.json', 'r') #reads the json file storing all systems and passports
+	jfile = open('config/systems.json', 'r') #reads the json file storing all systems and passports
 	jsonList = json.loads(jfile.read()) #parses the json into something useable
 
 	system = jsonList['Systems'][name]
