@@ -10,14 +10,23 @@ google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(function() {newSection(System);});
 
 function newSection(sys) {
- var parentDiv = document.getElementById('floatBox');
- var newContent = document.createElement('div');
- newContent.className = 'stats';
- newContent.innerHTML = "   <select id=\"systemSelector\" onchange='loadSysName(this)'>   <option value=\"Avocado\">Avocado</option>   <option value=\"Banana\">Banana</option>   <option value=\"Coconut\">Coconut</option>   <option value=\"Duku\">Duku</option>   <option value=\"Emblic\">Emblic</option>   <option value=\"Fig\">Fig</option>   <option value=\"Galia\">Galia</option>   <option value=\"Honeydew\">Honeydew</option>   <option value=\"Imbe\">Imbe</option>   <option value=\"Jalapeno\">Jalapeno</option>   <option value=\"Kiwi\">Kiwi</option>   <option value=\"Loganberry\">Loganberry</option>   <option value=\"Newton\">Newton</option>   <option value=\"Papaya\">Papaya</option>  </select>  <div class=closeButtonBottom></div>	<div class=closeButton onclick='closeSection(this)'></div> <div id=chart style=\"width:900px; height:500px;\"></div>	"
- newContent.id = sys;
- var child = parentDiv.appendChild(newContent);
- graphList.push(new Graph(child));
- graphList[graphList.length-1].updateData();
+
+ var http_r = new XMLHttpRequest();
+
+ http_r.onreadystatechange = function() {
+  if (http_r.readyState == 4 && http_r.status == 200) {
+   var parentDiv = document.getElementById('floatBox');
+   var newContent = document.createElement('div');
+   newContent.className = 'stats';
+   newContent.innerHTML =  http_r.responseText + " <div class=closeButtonBottom></div>	<div class=closeButton onclick='closeSection(this)'></div> <div id=chart style=\"width:900px; height:500px;\"></div>	"
+   newContent.id = sys;
+   var child = parentDiv.appendChild(newContent);
+   graphList.push(new Graph(child));
+   graphList[graphList.length-1].updateData();
+  }
+ }
+ http_r.open("GET", "../config/systemList.php", true);
+ http_r.send();
 }
 
 //graph object
