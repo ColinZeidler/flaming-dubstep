@@ -147,6 +147,7 @@ function deleteSelected() {
   var item  = selected.pop();
   item.parentNode.removeChild(item);
  }
+ editToggle()
 }
 
 function editToggle() {
