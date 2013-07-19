@@ -1,11 +1,11 @@
-var systemCount = 1;
+var systemCount = 0;
 var expandedL = '';
 var expandedW = '';
 function ready() {
+	newSystem();
 	systemName = '';
 	loadSysName(document.getElementById('systemSelector'));
-	getStats(true, document.getElementById('systemSelector').parentNode);
-}
+	getStats(true, document.getElementById('systemSelector').parentNode);}
 function loadSysName(obj) {
 	var element = obj;
 	obj.parentNode.id = element.options[element.selectedIndex].value;
